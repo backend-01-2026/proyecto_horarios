@@ -5,3 +5,5 @@
 - Desarrollad login y registro
 
 - Corregido el registro
+
+- Corregido el login
