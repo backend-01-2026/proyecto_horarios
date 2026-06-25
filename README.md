@@ -3,3 +3,5 @@
 - Rosalia
 
 - Desarrollad login y registro
+
+- Corregido el registro
