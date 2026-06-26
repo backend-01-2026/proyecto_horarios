@@ -3,3 +3,4 @@
 - Proyecto completado
 
 - Miguel Angel Sunagua Choqueticlla
+- Davinia
