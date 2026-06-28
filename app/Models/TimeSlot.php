@@ -8,6 +8,6 @@ class TimeSlot extends Model
 {
     public function availableClasses()
     {
-    return $this->hasMany(AvailableClass::class);
+        return $this->hasMany(AvailableClass::class);
     }
 }
