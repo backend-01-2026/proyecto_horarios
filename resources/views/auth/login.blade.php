@@ -12,8 +12,7 @@
         <img
           src="{{ asset("img/logo2.png") }}"
           alt="Logo UATF"
-          class="w-80 mb-6"
-        />
+          class="w-80 mb-6"/>
         <div class="w-32 h-1 my-6 bg-white rounded"></div>
         <h1 class="text-4xl font-bold text-center">
           UNIVERSIDAD
@@ -39,12 +38,10 @@
             <span class="font-bold text-red-700">Informática</span>
           </h6>
         </div>
-
         <h2 class="hidden text-4xl font-bold text-gray-800 lg:block">
           Ingeniería
           <span class="text-red-700">Informática</span>
         </h2>
-
         @if ($errors->any())
           <div class="mb-6 p-4 bg-red-50 rounded-lg border-l-4 border-red-600">
             <ul class="text-red-700 text-sm">
@@ -67,8 +64,7 @@
               value="{{ old("email") }}"
               required
               autofocus
-              class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-red-600 focus:ring-2 focus:ring-red-300 outline-none"
-            />
+              class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-red-600 focus:ring-2 focus:ring-red-300 outline-none"/>
           </div>
           <div>
             <label class="block mb-2 font-semibold text-gray-700">
@@ -78,8 +74,7 @@
               type="password"
               name="password"
               required
-              class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-red-600 focus:ring-2 focus:ring-red-300 outline-none"
-            />
+              class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-red-600 focus:ring-2 focus:ring-red-300 outline-none"/>
           </div>
           <button
             type="submit"
