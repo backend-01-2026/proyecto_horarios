@@ -24,8 +24,6 @@ class AppServiceProvider extends ServiceProvider
 
         /**
          * Desactivamos la protección de asignación masiva SOLO durante los tests.
-         * En producción, esto obliga a usar $fillable en los modelos,
-         * proporcionando una capa extra de seguridad.
          */
         if ($this->app->runningUnitTests()) {
             Model::unguard();

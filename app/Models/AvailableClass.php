@@ -1,11 +1,19 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class AvailableClass extends Model
 {
+    protected $fillable = [
+        'subject_id',
+        'teacher_id',
+        'classroom_id',
+        'time_slot_id',
+        'semester_id',
+        'group_id',
+        'specialty_id',
+    ];
+
     public function subject()
     {
         return $this->belongsTo(Subject::class);

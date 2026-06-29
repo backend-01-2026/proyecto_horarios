@@ -23,8 +23,12 @@ class NewScheduleNotification extends Notification implements ShouldQueue
 
     public function toMail(mixed $notifiable): MailMessage
     {
-        $prefijo = $notifiable->prefijo_academico ?? '';
-        $nombre  = $notifiable->nombre_completo   ?? 'Docente';
+        // CORRECCIÓN: Esta notificación se envía via Notification::route('mail', $adminEmail),
+        // por lo que $notifiable es un AnonymousNotifiable — NO un Teacher.
+        // Los campos prefijo_academico y nombre_completo siempre quedan null así.
+        // Los datos del docente ya vienen en $this->datos['docente_nombre']
+        // enviados por ProcessTeacherNotification::enviarNuevaInscripcion().
+        $docente = $this->datos['docente_nombre']   ?? 'Docente';
         $materia = $this->datos['materia']           ?? 'Sin especificar';
         $grupo   = $this->datos['grupo']             ?? 'Sin especificar';
         $aula    = $this->datos['aula']              ?? 'Sin especificar';
@@ -32,10 +36,11 @@ class NewScheduleNotification extends Notification implements ShouldQueue
         $alumno  = $this->datos['estudiante_nombre'] ?? 'Un estudiante';
 
         return (new MailMessage)
-            ->subject("Nueva inscripción en su clase: {$materia}")
-            ->greeting("Estimado/a {$prefijo} {$nombre},")
-            ->line("Le informamos que un estudiante se ha inscrito en su clase.")
+            ->subject("Nueva inscripción en clase: {$materia}")
+            ->greeting("Estimado/a administrador/a,")
+            ->line("Le informamos que un estudiante se ha inscrito en la siguiente clase.")
             ->line("**Detalles de la inscripción:**")
+            ->line("- **Docente:** {$docente}")
             ->line("- **Materia:** {$materia}")
             ->line("- **Grupo:** {$grupo}")
             ->line("- **Aula:** {$aula}")
@@ -57,6 +62,7 @@ class NewScheduleNotification extends Notification implements ShouldQueue
             'aula'               => $this->datos['aula']               ?? null,
             'horario'            => $this->datos['horario']            ?? null,
             'estudiante_nombre'  => $this->datos['estudiante_nombre']  ?? null,
+            'docente_nombre'     => $this->datos['docente_nombre']     ?? null,
         ];
     }
 
