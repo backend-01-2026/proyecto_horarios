@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvailableClassController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,3 +12,4 @@ Route::get('/hola', function () {
 });
 
 // Nuevo comentario
+Route::resource('available-classes', AvailableClassController::class);
