@@ -6,6 +6,10 @@ use App\Http\Requests\StoreSpecialtyRequest;
 use App\Http\Requests\UpdateSpecialtyRequest;
 use App\Models\Specialty;
 
+
+// ajuste de especialidades (ej: ing informatica").
+// Se usa después como filtro en el horario y para clasificar las clases.
+
 class SpecialtyController extends Controller
 {
     public function index()

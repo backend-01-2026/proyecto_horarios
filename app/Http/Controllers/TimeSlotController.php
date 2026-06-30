@@ -6,6 +6,10 @@ use App\Http\Requests\StoreTimeSlotRequest;
 use App\Http\Requests\UpdateTimeSlotRequest;
 use App\Models\TimeSlot;
 
+// Esto maneja los bloques de horario (ej: Lunes 08:00-09:30).
+// Es el ajuste basico solo crear, ver, editar y borrar.
+// Después estos bloques se usan para armar las clases y el horario.
+
 class TimeSlotController extends Controller
 {
     public function index()

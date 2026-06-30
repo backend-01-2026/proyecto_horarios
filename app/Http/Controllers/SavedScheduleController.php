@@ -80,9 +80,9 @@ class SavedScheduleController extends Controller
             ->with('success', 'Horario eliminado correctamente.');
     }
 
-    /**
-     * Arma una matriz [dia_semana][hora_inicio] = clase, para pintar la grilla del horario.
-     */
+ // guarda una sola clase (no un arreglo), porque es el horario
+    // personal de un usuario y no debería tener choques.
+    
     protected function buildGrid($availableClasses): array
     {
         $grid = [];

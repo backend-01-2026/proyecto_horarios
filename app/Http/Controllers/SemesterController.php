@@ -6,6 +6,10 @@ use App\Http\Requests\StoreSemesterRequest;
 use App\Http\Requests\UpdateSemesterRequest;
 use App\Models\Semester;
 
+// ajustes de semestres/gestiones (ej: "2026-I").
+// Igual que especialidades: se usa como filtro y para etiquetar los horarios guardados.
+
+
 class SemesterController extends Controller
 {
     public function index()
