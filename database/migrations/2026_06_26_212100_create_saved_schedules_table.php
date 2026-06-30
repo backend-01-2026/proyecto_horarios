@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('saved_schedules', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-        $table->string('nombre_horario');
-        $table->string('gestion');
-        $table->timestamps();
-    });
+            $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('nombre_horario');
+            $table->string('gestion');
+            $table->timestamps();
+        });
     }
 
     /**

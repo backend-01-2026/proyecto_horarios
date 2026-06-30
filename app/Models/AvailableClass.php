@@ -2,10 +2,25 @@
 
 namespace App\Models;
 
+use Database\Factories\AvailableClassFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[Fillable([
+    'subject_id',
+    'teacher_id',
+    'classroom_id',
+    'time_slot_id',
+    'semester_id',
+    'group_id',
+    'specialty_id',
+])]
 class AvailableClass extends Model
 {
+    /** @use HasFactory<AvailableClassFactory> */
+    use HasFactory;
+
     public function subject()
     {
         return $this->belongsTo(Subject::class);

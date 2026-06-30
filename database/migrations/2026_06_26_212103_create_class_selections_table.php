@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('class_selections', function (Blueprint $table) {
-                $table->foreignId('saved_schedule_id')->constrained('saved_schedules')->cascadeOnDelete();
-                $table->foreignId('available_class_id')->constrained('available_classes')->cascadeOnDelete();
-                $table->primary(['saved_schedule_id', 'available_class_id']);
-            });
+            $table->foreignId('saved_schedule_id')->constrained('saved_schedules')->cascadeOnDelete();
+            $table->foreignId('available_class_id')->constrained('available_classes')->cascadeOnDelete();
+            $table->primary(['saved_schedule_id', 'available_class_id']);
+        });
     }
 
     /**

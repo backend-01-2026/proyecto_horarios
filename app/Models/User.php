@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'lastname', 'email', 'password', 'rol'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -32,7 +32,6 @@ class User extends Authenticatable
 
     public function savedSchedules()
     {
-    return $this->hasMany(SavedSchedule::class);
+        return $this->hasMany(SavedSchedule::class);
     }
-
 }
