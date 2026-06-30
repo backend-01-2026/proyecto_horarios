@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title', 'Sistema de Horarios') · UATF</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="flex min-h-screen bg-gray-100">
-    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 text-white bg-red-900 shadow-lg">
-        <div class="flex items-center gap-3">
-            <span class="text-lg font-bold">Sistema de Horarios</span>
-        </div>
-        <div class="flex items-center gap-4 text-sm">
-            <a href="{{ route('available-classes.index') }}" class="hover:underline">Clases Disponibles</a>
-        </div>
-    </nav>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title', 'Gestor de Horarios')</title>
 
-    <main class="flex-1 w-full pt-16">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @stack('styles')
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
+
+    @include('layouts.partials.header')
+
+    <main class="flex-1 max-w-7xl mx-auto w-full px-4 py-6">
+
+        @hasSection('breadcrumbs')
+            <nav class="text-sm text-slate-400 mb-4" aria-label="Breadcrumb">
+                @yield('breadcrumbs')
+            </nav>
+        @endif
+
         @if (session('success'))
-            <div class="mx-4 mt-4 p-4 text-green-700 bg-green-100 rounded-lg border-l-4 border-green-600">
+            <div class="mb-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3">
                 {{ session('success') }}
             </div>
         @endif
 
-        @if ($errors->any())
-            <div class="mx-4 mt-4 p-4 bg-red-50 rounded-lg border-l-4 border-red-600">
-                <ul class="text-red-700 text-sm">
-                    @foreach ($errors->all() as $error)
-                        <li>• {{ $error }}</li>
-                    @endforeach
-                </ul>
+        @if (session('error'))
+            <div class="mb-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3">
+                {{ session('error') }}
             </div>
         @endif
 
         @yield('content')
     </main>
+
+    @include('layouts.partials.footer')
+
+    @stack('scripts')
 </body>
 </html>
