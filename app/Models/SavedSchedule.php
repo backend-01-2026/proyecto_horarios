@@ -8,11 +8,11 @@ class SavedSchedule extends Model
 {
     public function user()
     {
-    return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function availableClasses()
     {
-    return $this->belongsToMany(AvailableClass::class, 'class_selections');
+        return $this->belongsToMany(AvailableClass::class, 'class_selections');
     }
 }
