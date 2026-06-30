@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class SavedSchedule extends Model
 {
+    protected $fillable = ['user_id', 'nombre_horario', 'gestion'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

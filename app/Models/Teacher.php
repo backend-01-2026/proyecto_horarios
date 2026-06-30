@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['prefijo_academico', 'nombre_completo'];
+
     public function subjects()
     {
         return $this->belongsToMany(Subject::class, 'subject_teacher');

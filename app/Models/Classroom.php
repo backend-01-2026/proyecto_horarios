@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['codigo'];
+
     public function availableClasses()
     {
         return $this->hasMany(AvailableClass::class);
