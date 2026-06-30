@@ -16,5 +16,3 @@ class Classroom extends Model
         return $this->hasMany(AvailableClass::class);
     }
 }
-
-
