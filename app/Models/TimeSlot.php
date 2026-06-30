@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TimeSlot extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['dia_semana', 'hora_inicio', 'hora_fin'];
+
     public function availableClasses()
     {
         return $this->hasMany(AvailableClass::class);
