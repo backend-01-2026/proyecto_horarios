@@ -7,8 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/hola",function(){
-    return "Hola mundo";
+Route::get('/hola', function () {
+    return 'Hola mundo';
 });
 
+// Nuevo comentario
 Route::resource('available-classes', AvailableClassController::class);

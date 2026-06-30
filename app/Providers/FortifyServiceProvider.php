@@ -46,11 +46,11 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         // Definiendo vista para el registro de usuarios
-        Fortify::registerView(function(){
+        Fortify::registerView(function () {
             return view('auth.register');
         });
 
-        Fortify::loginView(function(){
+        Fortify::loginView(function () {
             return view('auth.login');
         });
     }

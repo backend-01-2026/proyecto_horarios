@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('time_slots', function (Blueprint $table) {
-        $table->id();
-        $table->tinyInteger('dia_semana');
-        $table->time('hora_inicio');
-        $table->time('hora_fin');
-        $table->timestamps();
-    });
+            $table->id();
+            $table->tinyInteger('dia_semana');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
+            $table->timestamps();
+        });
     }
 
     /**

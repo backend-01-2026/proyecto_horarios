@@ -10,7 +10,7 @@ class Specialty extends Model
     use HasFactory;
     public function availableClasses()
     {
-    return $this->hasMany(AvailableClass::class);
+        return $this->hasMany(AvailableClass::class);
     }
 }
 

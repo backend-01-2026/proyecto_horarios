@@ -11,11 +11,11 @@ class Subject extends Model
 
     public function teachers()
     {
-    return $this->belongsToMany(Teacher::class, 'subject_teacher');
+        return $this->belongsToMany(Teacher::class, 'subject_teacher');
     }
 
-public function availableClasses()
+    public function availableClasses()
     {
-    return $this->hasMany(AvailableClass::class);
+        return $this->hasMany(AvailableClass::class);
     }
 }
