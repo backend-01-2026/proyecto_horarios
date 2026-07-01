@@ -14,7 +14,10 @@ Route::get("/hola",function(){
     return "Hola mundo";
 });
 
-// Nuevo comentario
+Route::get('/subjects', function () {
+    return view('subjects.index');
+};
+
 Route::resource('available-classes', AvailableClassController::class);
 
 
