@@ -3,72 +3,76 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="p-6">
+<div class="p-6 bg-gray-50 min-h-screen">
     <h1 class="text-2xl font-bold text-gray-800 mb-6">Resumen General</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        
         <div class="rounded-2xl bg-blue-600 text-white p-5 shadow-lg">
-            <span class="text-3xl font-bold">{{ $counters['specialties'] }}</span>
+            <span class="text-3xl font-bold">{{ $counters['specialties'] ?? 0 }}</span>
             <p class="mt-2 text-sm font-medium text-white/90">Especialidades</p>
-            <a href="{{ route('specialties.index') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
+            <a href="{{ url('/specialties') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
         </div>
 
         <div class="rounded-2xl bg-amber-500 text-white p-5 shadow-lg">
-            <span class="text-3xl font-bold">{{ $counters['semesters'] }}</span>
+            <span class="text-3xl font-bold">{{ $counters['semesters'] ?? 0 }}</span>
             <p class="mt-2 text-sm font-medium text-white/90">Semestres</p>
-            <a href="{{ route('semesters.index') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
+            <a href="{{ url('/semesters') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
         </div>
 
         <div class="rounded-2xl bg-emerald-600 text-white p-5 shadow-lg">
-            <span class="text-3xl font-bold">{{ $counters['teachers'] }}</span>
-            <p class="mt-2 text-sm font-medium text-white/90">Docentes</p>
-            <a href="{{ route('teachers.index') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
+            <span class="text-3xl font-bold">{{ $counters['subjects'] ?? 0 }}</span>
+            <p class="mt-2 text-sm font-medium text-white/90">Materias</p>
+            <a href="{{ url('/subjects') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
         </div>
 
         <div class="rounded-2xl bg-purple-600 text-white p-5 shadow-lg">
-            <span class="text-3xl font-bold">{{ $counters['subjects'] }}</span>
-            <p class="mt-2 text-sm font-medium text-white/90">Materias</p>
-            <a href="{{ route('subjects.index') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
-        </div>
-
-        <div class="rounded-2xl bg-rose-600 text-white p-5 shadow-lg">
-            <span class="text-3xl font-bold">{{ $counters['classrooms'] }}</span>
-            <p class="mt-2 text-sm font-medium text-white/90">Aulas</p>
-            <a href="{{ route('classrooms.index') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
-        </div>
-
-        <div class="rounded-2xl bg-cyan-600 text-white p-5 shadow-lg">
-            <span class="text-3xl font-bold">{{ $counters['time_slots'] }}</span>
-            <p class="mt-2 text-sm font-medium text-white/90">Bloques horarios</p>
-            <a href="{{ route('time-slots.index') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
-        </div>
-
-        <div class="rounded-2xl bg-orange-600 text-white p-5 shadow-lg">
-            <span class="text-3xl font-bold">{{ $counters['groups'] }}</span>
-            <p class="mt-2 text-sm font-medium text-white/90">Grupos</p>
-            <a href="{{ route('groups.index') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
-        </div>
-
-        <div class="rounded-2xl bg-red-700 text-white p-5 shadow-lg">
-            <span class="text-3xl font-bold">{{ $counters['available_classes'] }}</span>
-            <p class="mt-2 text-sm font-medium text-white/90">Clases programadas</p>
-            <a href="{{ route('available-classes.index') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
+            <span class="text-3xl font-bold">{{ $counters['teachers'] ?? 0 }}</span>
+            <p class="mt-2 text-sm font-medium text-white/90">Profesores Total</p>
+            <a href="{{ url('/teachers') }}" class="mt-3 inline-block text-xs font-semibold text-white/80 hover:text-white">Ver detalles →</a>
         </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div class="bg-white p-5 rounded-2xl shadow">
-            <h2 class="font-bold text-gray-800 mb-3">Ocupacion de Aulas</h2>
-            <p class="text-sm text-gray-600">Total de aulas: <strong>{{ $classroomsTotal }}</strong></p>
-            <p class="text-sm text-gray-600">Con clases asignadas: <strong>{{ $classroomsConClases }}</strong></p>
-            <p class="text-sm text-gray-600">Libres (sin clases): <strong>{{ $classroomsLibres }}</strong></p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                <span class="w-3 h-3 bg-red-600 rounded-full mr-2"></span> Ocupación de Aulas
+            </h3>
+            <div class="space-y-3">
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">Total de Aulas:</span>
+                    <span class="font-bold text-gray-800">{{ $classroomsTotal ?? 0 }}</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-emerald-600 font-medium">Aulas Libres (Disponibles):</span>
+                    <span class="font-bold text-emerald-600">{{ $classroomsLibres ?? 0 }}</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-amber-600 font-medium">Aulas con Clases Asignadas:</span>
+                    <span class="font-bold text-amber-600">{{ $classroomsConClases ?? 0 }}</span>
+                </div>
+            </div>
         </div>
 
-        <div class="bg-white p-5 rounded-2xl shadow">
-            <h2 class="font-bold text-gray-800 mb-3">Carga de Docentes</h2>
-            <p class="text-sm text-gray-600">Total de docentes: <strong>{{ $teachersTotal }}</strong></p>
-            <p class="text-sm text-gray-600">Con clases asignadas: <strong>{{ $teachersConClases }}</strong></p>
-            <p class="text-sm text-gray-600">Sin clases asignadas: <strong>{{ $teachersSinClases }}</strong></p>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                <span class="w-3 h-3 bg-gray-800 rounded-full mr-2"></span> Estado de Docentes
+            </h3>
+            <div class="space-y-3">
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">Total Docentes:</span>
+                    <span class="font-bold text-gray-800">{{ $teachersTotal ?? 0 }}</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-indigo-600 font-medium">Docentes con Horario Activo:</span>
+                    <span class="font-bold text-indigo-600">{{ $teachersConClases ?? 0 }}</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-500 font-medium">Docentes sin Clases Asignadas:</span>
+                    <span class="font-bold text-gray-500">{{ $teachersSinClases ?? 0 }}</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
