@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AvailableClassController;
+use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\SpecialtyController;
+use App\Http\Controllers\TimeSlotController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -24,6 +27,9 @@ Route::get('dashboard', function () {
 });
 
 Route::resource('available-classes', AvailableClassController::class);
+Route::resource('semesters', SemesterController::class);
+Route::resource('specialties', SpecialtyController::class);
+Route::resource('time-slots', TimeSlotController::class);
 
 Route::resource('specialties', SpecialtyController::class);
 
