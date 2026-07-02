@@ -13,7 +13,8 @@ Route::get('/', function () {
 Route::get('/home_layout', function () {
     return view('layout');
 });
-Route::get("/hola", function () {
+
+Route::get("/hola",function(){
     return "Hola mundo";
 });
 
@@ -21,10 +22,16 @@ Route::get('/subjects', function () {
     return view('subjects.index');
 });
 
+Route::get('dashboard', function () {
+    return view('layout');
+});
+
 Route::resource('available-classes', AvailableClassController::class);
 Route::resource('semesters', SemesterController::class);
 Route::resource('specialties', SpecialtyController::class);
 Route::resource('time-slots', TimeSlotController::class);
+
+Route::resource('specialties', SpecialtyController::class);
 
 
 Route::middleware(['auth'])->group(function () {
